@@ -7,7 +7,7 @@ from vispy import app, scene
 body_1_pos=np.array([-20000, 40000, 1000000], dtype=np.float64)
 body_2_pos=np.array([10000, 900000, 30000], dtype=np.float64)
 
-#ray_start_pos=body_1_pos#assume body 1 emits the ray
+ray_start_pos=body_1_pos + 1000#assume body 1 emits the ray
 
 # Create the application
 canvas = scene.SceneCanvas(
@@ -65,19 +65,19 @@ sphere2.transform = scene.transforms.STTransform(
 # y = 2 * np.sin(t)
 # z = t / 2
 
-start_pos = np.array([20.0, 2.0, 0.0], dtype=np.float64)#ray_start_pos #
-start_vel = np.array([pow(3,8), 0.0, 0.0], dtype=np.float64)
+start_pos = ray_start_pos#np.array([20.0, 2.0, 0.0], dtype=np.float64)#ray_start_pos #
+start_vel = np.array([0.0,3*pow(10,8), 0.0], dtype=np.float64)
 #MAKE SURE NUMPY ARRAYS ARE USED FOR DIFFERENCE FINDING
 
 #Force=G*((m1*m2)/r^2)
-time_step = 0.001
-steps = 1000000
+time_step = 0.0001
+steps = 10000
 pos_log = np.zeros((steps, 3), dtype=np.float64)
 G = 6.67 * pow(10,-11)
 
 mass_body_1 = 6 * pow(10, 24)
-mass_body_2 = 6 * pow(10, 24)
-mass_body_3 = 6 * pow(10, 22)
+mass_body_2 = 250 * pow(10, 31)
+mass_body_3 = 6 * pow(10, -22)
 
 
 
